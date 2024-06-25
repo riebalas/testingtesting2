@@ -1,0 +1,48 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class RegisterAndLoginTest {
+
+    public static void main(String[] args) {
+        
+        System.setProperty("webdriver.gecko.driver", "/path/to/geckodriver");
+
+        
+        WebDriver driver = new FirefoxDriver();
+
+        
+        driver.get("file:///path/to/your/registration.html");
+
+        
+        WebElement usernameField = driver.findElement(By.id("username"));
+        WebElement passwordField = driver.findElement(By.id("password"));
+        WebElement emailField = driver.findElement(By.id("email"));
+
+        usernameField.sendKeys("testuser");
+        passwordField.sendKeys("password");
+        emailField.sendKeys("testuser@example.com");
+
+        
+        WebElement registerButton = driver.findElement(By.xpath("//input[@value='Register']"));
+        registerButton.click();
+
+        
+        driver.get("file:///path/to/your/login.html");
+
+        
+        WebElement loginUsernameField = driver.findElement(By.id("username"));
+        WebElement loginPasswordField = driver.findElement(By.id("password"));
+
+        loginUsernameField.sendKeys("testuser");
+        loginPasswordField.sendKeys("password");
+
+        
+        WebElement loginButton = driver.findElement(By.xpath("//input[@value='Login']"));
+        loginButton.click();
+
+        
+        driver.quit();
+    }
+}
